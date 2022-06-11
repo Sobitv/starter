@@ -9,7 +9,7 @@ var uiController = (function () {
     return {
         getInput: function () {
             return {
-                type: document.querySelector(DOMstrings.inputType).value,
+                type: document.querySelector(DOMstrings.inputType).value, // inc ,exp
                 description: document.querySelector(DOMstrings.inputDescription).value,
                 value: document.querySelector(DOMstrings.inputValue).value
             };
@@ -22,12 +22,13 @@ var uiController = (function () {
 })();
 //SANHUUTEI AJILLAH CONTROLLER
 var financeController = (function () {
+    //private data
     var Income = function (id, description, value) {
         this.id = id;
         this.description = description;
         this.value = value;
     }
-
+    //private data
     var Expense = function (id, description, value) {
         this.id = id;
         this.description = description;
@@ -38,8 +39,9 @@ var financeController = (function () {
 
     //var totalIncomes = 0;
     //var totalExpenses = 0;
+    //private data
     var data = {
-        allItems: {
+        items: {
             inc: [],
             exp: []
         },
@@ -47,14 +49,35 @@ var financeController = (function () {
             inc: 0,
             exp: 0
         }
+    };
+
+    return {
+        addItem: function (type, desc, val) {
+
+            var item, id;
+            if (data.items[type].length === 0) id = 1;
+            else {
+                data.items[type][data.items[type].length - 1].id + 1;
+            }
+
+            if (type === 'inc') {
+                item = new Income(id, desc, val);
+            } else {
+                //type === exp
+                item = new Expense(id, desc, val);
+            }
+
+            data.items[type].push(item);
+        }
     }
 })();
 //Programmin holbogch controller
 var appController = (function (uiController, financeController) {
     var ctrlAdditem = function () {
         //1.oruulah ugugdliig delgetsees olj avna.
-        console.log(uiController.getInput());
+        var input = uiController.getInput();
         //2.olj avsan ugugdliig sanhuugiin controllert damjuulj tend hadgalna.
+        financeController.addItem(input.type, input.description, input.value);
         //3.olj avsan ugugdluudee web deer tohiroh hesegt gargana.
         //4.tusviig tootsoolno.
         //5.etssiin uldegdel tootsoog delgetsend gargana.

@@ -80,10 +80,12 @@ body {
 .budget__income {
     margin-bottom: 10px;
     background-color: #28B9B5;
+    border-radius: 10px;
 }
 
 .budget__expenses {
     background-color: #FF5049;
+    border-radius: 10px;
 }
 
 .budget__income--text,
@@ -123,8 +125,8 @@ body {
 /***** FORM *****/
 .add {
     padding: 14px;
-    border-bottom: 1px solid #e7e7e7;
-    background-color: #f7f7f7;
+    border-bottom: 1px solid #f0ffff;
+    background-color: #f0ffff;
 }
 
 .add__container {
@@ -142,6 +144,7 @@ body {
     margin-right: 10px;
     font-weight: 300;
     transition: border 0.3s;
+    border-radius: 5px;
 }
 
 .add__description,

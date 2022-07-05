@@ -43,11 +43,11 @@ var financeController = (function () {
     var data = {
         items: {
             inc: [],
-            exp: []
+            exp: [],
         },
         totals: {
             inc: 0,
-            exp: 0
+            exp: 0,
         }
     };
 
